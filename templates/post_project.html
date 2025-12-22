@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Разместить Проект | WorkFlow</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+</head>
+<body class="post-project-body">
+    <header class="header">
+        <div class="container">
+            <a href="/" class="logo">
+                <img src="{{ url_for('static', path='/images/logo.png') }}" alt="Логотип" width="30" height="30">
+                <span>WorkFlow</span>
+            </a>
+
+            <nav class="nav" role="navigation">
+                <a href="/">Главная</a>
+                <a href="/jobs">Найти работу</a>
+                <a href="/post-project">Разместить проект</a>
+            </nav>
+
+            <div class="auth-links">
+                <a href="login.html#login" class="btn btn-secondary">Войти</a>
+                <a href="/dashboard" class="btn btn-primary">Личный Кабинет</a>
+            </div>
+
+            <button class="menu-toggle" aria-label="Открыть меню" aria-expanded="false">
+                &#9776;
+            </button>
+        </div>
+    </header>
+
+    <main class="post-project-main">
+        <div class="container">
+            <div class="form-card">
+                <h2>Разместить Новый Проект</h2>
+                <p class="subtitle-text">Заполните детали, чтобы найти идеального фрилансера для вашей задачи.</p>
+
+                <form action="/api/create-project" method="POST" class="project-post-form">
+
+                    <!-- Project Title -->
+                    <div class="form-group">
+                        <label for="project-title">Название проекта</label>
+                        <input type="text" id="project-title" placeholder="Например: Разработка корпоративного сайта на React" required>
+                    </div>
+
+                    <!-- Category -->
+                    <div class="form-group">
+                        <label for="project-category">Категория</label>
+                        <select id="project-category" required>
+                            <option value="" disabled selected>Выберите категорию</option>
+                            <option value="webdev">Веб-разработка</option>
+                            <option value="design">Дизайн</option>
+                            <option value="copywriting">Копирайтинг</option>
+                            <option value="marketing">Маркетинг</option>
+                            <option value="analytics">Аналитика</option>
+                            <option value="mobile">Мобильные приложения</option>
+                            <option value="other">Другое</option>
+                        </select>
+                    </div>
+
+                    <!-- Detailed Description (Simulating rich text editor area) -->
+                    <div class="form-group">
+                        <label for="project-description">Подробное описание проекта</label>
+                        <div class="editor-placeholder">
+                            <p class="editor-tip">Кратко опишите задачу, цели, ожидаемые результаты и любые технические требования. Чем подробнее, тем лучше.</p>
+                        </div>
+                        <textarea id="project-description" rows="10" placeholder="Полное описание проекта..." required></textarea>
+                    </div>
+
+                    <!-- Budget & Deadline Group -->
+                    <div class="form-group-triple">
+                        
+                        <!-- Budget Type -->
+                        <div class="form-group budget-type-group">
+                            <label>Тип оплаты</label>
+                            <div class="radio-group">
+                                <label><input type="radio" name="budget_type" value="fixed" checked> Фиксированный бюджет</label>
+                                <label><input type="radio" name="budget_type" value="range"> Диапазон</label>
+                            </div>
+                        </div>
+
+                        <!-- Budget Value (USD) -->
+                        <div class="form-group budget-value-group">
+                            <label for="budget-value">Бюджет (USD)</label>
+                            <input type="number" id="budget-value" placeholder="Сумма" min="50" required>
+                            
+                            <div class="budget-range-inputs hidden">
+                                <input type="number" id="budget-min" placeholder="Мин. ($)" min="0">
+                                <input type="number" id="budget-max" placeholder="Макс. ($)" min="0">
+                            </div>
+                        </div>
+
+                        <!-- Deadline -->
+                        <div class="form-group">
+                            <label for="project-deadline">Срок выполнения (Дата)</label>
+                            <input type="date" id="project-deadline" required>
+                        </div>
+                    </div>
+
+                    <!-- Required Skills -->
+                    <div class="form-group">
+                        <label for="project-skills">Требуемые навыки/Теги</label>
+                        <input type="text" id="project-skills" placeholder="Введите навыки (например: React, Figma, SEO) и нажмите Enter или запятую">
+                        <div id="skills-container" class="skills-container">
+                        </div>
+                        <p class="hint-text">Перечислите ключевые навыки, которыми должен обладать фрилансер.</p>
+                    </div>
+
+
+                    <button type="submit" class="btn btn-cta btn-lg btn-full-width publish-button">
+                        Опубликовать Проект
+                    </button>
+                    
+                </form>
+            </div>
+        </div>
+    </main>
+    
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>WorkFlow</h4>
+                    <p>Платформа для объединения талантов и бизнеса.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Компания</h4>
+                    <ul>
+                        <li><a href="#">О нас</a></li>
+                        <li><a href="#">Карьера</a></li>
+                        <li><a href="#">Блог</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Поддержка</h4>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Связаться с нами</a></li>
+                        <li><a href="#">Условия использования</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Для фрилансеров</h4>
+                    <ul>
+                        <li><a href="#">Найти работу</a></li>
+                        <li><a href="#">Профиль</a></li>
+                        <li><a href="#">Отзывы</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 WorkFlow. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', path='/js/main.js') }}" type="module"></script>
+</body>
+</html>
+

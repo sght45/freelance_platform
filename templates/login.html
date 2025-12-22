@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход / Регистрация | WorkFlow</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+</head>
+<body class="auth-page-body">
+    <header class="header">
+        <div class="container">
+            <a href="/" class="logo" id="home">
+                <img src="{{ url_for('static', path='/images/logo.png') }}" alt="Логотип" width="30" height="30">
+                <span>WorkFlow</span>
+            </a>
+            <!-- Minimal header for authentication page -->
+        </div>
+    </header>
+
+    <main class="auth-main">
+        <div class="auth-container">
+            <div class="auth-tabs">
+                <button class="tab-button active" data-tab="login">Войти</button>
+                <button class="tab-button" data-tab="register">Регистрация</button>
+            </div>
+
+            <!-- Login Form -->
+            <div id="login" class="tab-content active">
+                <h2>Вход в WorkFlow</h2>
+                <form action="/api/login" method="POST" class="auth-form">
+                    <div class="form-group">
+                        <label for="login-email">Email</label>
+                        <input type="email" id="login-email" name="email" placeholder="you@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Пароль</label>
+                        <input type="password" id="login-password" name="password" placeholder="••••••••" required>
+                    </div>
+                    <div class="forgot-password">
+                        <a href="#">Забыли пароль?</a>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-lg btn-full-width">Войти</button>
+                </form>
+
+                <div class="social-login-divider">
+                    <span>или</span>
+                </div>
+
+                <div class="social-login">
+                    <button class="btn social-btn google">
+                        <img src="google-icon.png" alt="Google" width="20" height="20"> Войти с Google
+                    </button>
+                    <button class="btn social-btn facebook">
+                        <img src="facebook-icon.png" alt="Facebook" width="20" height="20"> Войти с Facebook
+                    </button>
+                </div>
+            </div>
+
+            <!-- Registration Form -->
+            <div id="register" class="tab-content hidden">
+                <h2>Присоединяйтесь к WorkFlow</h2>
+                <form action="/api/login" method="POST" class="auth-form">
+                    <div class="form-group">
+                        <label for="register-name">Имя</label>
+                        <input type="text" id="register-name" name="name" placeholder="Ваше полное имя" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-email">Email</label>
+                        <input type="email" id="register-email" name="email" placeholder="you@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-password">Пароль</label>
+                        <input type="password" id="register-password" name="password" placeholder="••••••••" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-confirm-password">Подтверждение пароля</label>
+                        <input type="password" id="register-confirm-password" name="confirm-password" placeholder="Повторите пароль" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-lg btn-full-width">Зарегистрироваться</button>
+                </form>
+                
+                <div class="social-login-divider">
+                    <span>или</span>
+                </div>
+
+                <div class="social-login">
+                    <button class="btn social-btn google">
+                        <img src="google-icon.png" alt="Google" width="20" height="20"> Регистрация через Google
+                    </button>
+                    <button class="btn social-btn facebook">
+                        <img src="facebook-icon.png" alt="Facebook" width="20" height="20"> Регистрация через Facebook
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="{{ url_for('static', path='/js/main.js') }}" type="module"></script>
+</body>
+</html>
+

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Платформа Фриланса</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <a href="/" class="logo" id="home">
+                <img src="{{ url_for('static', path='/images/logo.png') }}" alt="Логотип" width="30" height="30">
+                <span>WorkFlow</span>
+            </a>
+
+            <nav class="nav" role="navigation">
+                <a href="#home">Главная</a>
+                <a href="/jobs">Найти работу</a>
+                <a href="/post-project">Разместить проект</a>
+            </nav>
+
+            <div class="auth-links">
+                <a href="login.html#login" class="btn btn-secondary">Войти</a>
+                <a href="/dashboard" class="btn btn-primary">Личный Кабинет</a>
+            </div>
+
+            <button class="menu-toggle" aria-label="Открыть меню" aria-expanded="false">
+                &#9776;
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>Ваш успех начинается здесь. Найдите идеального фрилансера или проект.</h1>
+                <p class="subtitle">Тысячи проверенных специалистов готовы приступить к работе прямо сейчас. Быстро, надежно, эффективно.</p>
+                <div class="cta-group">
+                    <a href="/jobs" class="btn btn-cta btn-lg" id="find">Найти работу</a>
+                    <a href="/post-project" class="btn btn-outline btn-lg" id="post">Разместить проект</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section class="how-it-works">
+            <div class="container">
+                <h2>Как это работает?</h2>
+                <div class="steps-grid">
+                    <div class="step">
+                        <div class="icon-circle">1</div>
+                        <h3>Регистрация</h3>
+                        <p>Создайте профиль заказчика или фрилансера за считанные минуты.</p>
+                    </div>
+                    <div class="step">
+                        <div class="icon-circle">2</div>
+                        <h3>Поиск и Выбор</h3>
+                        <p>Используйте умный поиск, чтобы найти подходящий проект или специалиста.</p>
+                    </div>
+                    <div class="step">
+                        <div class="icon-circle">3</div>
+                        <h3>Выполнение</h3>
+                        <p>Начните работу, используя наши безопасные инструменты для общения и оплаты.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories Section -->
+        <section class="categories-section">
+            <div class="container">
+                <h2>Популярные категории фриланса</h2>
+                <div class="categories-grid">
+                    <div class="category-card">
+                        <i class="icon">💻</i>
+                        <h4>Веб-разработка</h4>
+                        <p>Сайты, приложения, бэкенд.</p>
+                    </div>
+                    <div class="category-card">
+                        <i class="icon">🎨</i>
+                        <h4>Дизайн</h4>
+                        <p>Графика, UI/UX, брендинг.</p>
+                    </div>
+                    <div class="category-card">
+                        <i class="icon">✍️</i>
+                        <h4>Копирайтинг</h4>
+                        <p>Тексты, статьи, SMM.</p>
+                    </div>
+                    <div class="category-card">
+                        <i class="icon">📈</i>
+                        <h4>Маркетинг</h4>
+                        <p>SEO, реклама, стратегии.</p>
+                    </div>
+                    <div class="category-card">
+                        <i class="icon">📊</i>
+                        <h4>Аналитика</h4>
+                        <p>Данные, отчеты, исследования.</p>
+                    </div>
+                    <div class="category-card">
+                        <i class="icon">📱</i>
+                        <h4>Мобильные приложения</h4>
+                        <p>iOS и Android разработка.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>WorkFlow</h4>
+                    <p>Платформа для объединения талантов и бизнеса.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Компания</h4>
+                    <ul>
+                        <li><a href="#">О нас</a></li>
+                        <li><a href="#">Карьера</a></li>
+                        <li><a href="#">Блог</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Поддержка</h4>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Связаться с нами</a></li>
+                        <li><a href="#">Условия использования</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Для фрилансеров</h4>
+                    <ul>
+                        <li><a href="#">Найти работу</a></li>
+                        <li><a href="#">Профиль</a></li>
+                        <li><a href="#">Отзывы</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 WorkFlow. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', path='/js/main.js') }}" type="module"></script>
+</body>
+</html>
+
