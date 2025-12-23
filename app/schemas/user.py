@@ -42,5 +42,5 @@ class SUserAdd(BaseModel):
     role_id: int
 
 
-class SUserGet(User):
-    pass  # Пока просто наследуем от User
+class SUserGet(SUserAdd):
+    id:int

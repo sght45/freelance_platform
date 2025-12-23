@@ -40,6 +40,7 @@ from app.api.endpoints import (
     freelancer_skills as freelancer_skills_router
 )
 from app.api import auth
+from app.api.roles import router as roles_router
 # =================================
 
 @asynccontextmanager
@@ -283,6 +284,12 @@ app.include_router(
     auth.router,
     prefix="/api",
     tags=["🔐 Аутентификация"]
+)
+# Аутентификация (Auth)
+app.include_router(
+    roles_router,
+    prefix="/api",
+    tags=["Роли"]
 )
 
 # ========== СИСТЕМНЫЕ ЭНДПОИНТЫ ==========

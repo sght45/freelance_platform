@@ -18,4 +18,4 @@ class PaymentModel(Base):
     payment_date: Mapped[datetime] = mapped_column(DateTime, nullable=True)
 
     proposal_id: Mapped[int] = mapped_column(ForeignKey("proposals.id"), nullable=False)
-    proposal: Mapped["ProposalModel"] = relationship(back_populates="payment")
+    proposal: Mapped["ProposalModel"] = relationship("ProposalModel", foreign_keys=[proposal_id])
