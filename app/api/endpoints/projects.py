@@ -75,31 +75,12 @@ async def create_project(
     db: AsyncSession = Depends(get_db),
     current_user: UserModel = Depends(get_current_user)
 ):
-    # Проверяем, что пользователь существует и является клиентом
-    result = await db.execute(
-        select(UserModel).where(UserModel.id == project.client_id)
-    )
-    client = result.scalar_one_or_none()
-    
-    if not client:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="Клиент не найден"
-        )
-    
-    # Проверяем, что текущий пользователь - это клиент, который создает проект
-    if current_user.id != project.client_id:
-        raise HTTPException(
-            status_code=status.HTTP_403_FORBIDDEN,
-            detail="Вы можете создавать проекты только от своего имени"
-        )
-    
-    # Создаем проект
-    db_project = ProjectModel(**project.dict())
+    # Создаем проект от имени текущего пользователя
+    db_project = ProjectModel(**project.dict(), client_id=current_user.id)
     db.add(db_project)
     await db.commit()
     await db.refresh(db_project)
-    
+
     return db_project
 
 # PUT /api/projects/{project_id} - Обновить проект

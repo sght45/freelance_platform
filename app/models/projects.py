@@ -24,4 +24,5 @@ class ProjectModel(Base):
     
     # Связи
     client = relationship("UserModel", back_populates="projects")
+    proposals = relationship("ProposalModel", back_populates="project", cascade="all, delete-orphan")
     responses = relationship("ResponseModel", back_populates="project", cascade="all, delete-orphan")
