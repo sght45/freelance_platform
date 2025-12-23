@@ -19,7 +19,8 @@ class ProposalModel(Base):
     submitted_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
 
     project_id: Mapped[int] = mapped_column(ForeignKey("projects.id"), nullable=False)
-    project: Mapped["ProjectModel"] = relationship(back_populates="proposals")
+    project: Mapped["ProjectModel"] = relationship("ProjectModel", foreign_keys=[project_id])
+    
 
     freelancer_id: Mapped[int] = mapped_column(ForeignKey("freelancers.id"), nullable=False)
     freelancer: Mapped["FreelancerModel"] = relationship(back_populates="proposals")

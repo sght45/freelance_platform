@@ -11,7 +11,7 @@ from app.schemas.roles import SRoleAdd, SRoleGet
 from app.schemas.relations_users_roles import SRoleGetWithRels
 from app.services.roles import RoleService
 
-router = APIRouter(prefix="/auth", tags=["Управление ролями"])
+router = APIRouter(prefix="/auth")
 
 
 @router.post("/roles", summary="Создание новой роли")
