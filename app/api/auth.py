@@ -14,7 +14,7 @@ from app.schemas.user import SUserAddRequest, SUserAuth
 from app.schemas.relations_users_roles import SUserGetWithRels
 from app.services.auth import AuthService
 
-router = APIRouter(prefix="/auth", tags=["Авторизация и аутентификация"])
+router = APIRouter(prefix="/auth")
 
 
 @router.post("/register", summary="Регистрация нового пользователя")
