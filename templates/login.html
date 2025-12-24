@@ -28,7 +28,7 @@
             <!-- Login Form -->
             <div id="login" class="tab-content active">
                 <h2>Вход в WorkFlow</h2>
-                <form action="/api/auth/register" method="POST" class="auth-form">
+                <form id="login-form" class="auth-form">
                     <div class="form-group">
                         <label for="login-email">Email</label>
                         <input type="email" id="login-email" name="email" placeholder="you@example.com" required>
@@ -49,10 +49,10 @@
 
                 <div class="social-login">
                     <button class="btn social-btn google">
-                        <img src="google-icon.png" alt="Google" width="20" height="20"> Войти с Google
+                        <img src="{{ url_for('static', path='/images/google-icon.png') }}" alt="Google" width="20" height="20"> Войти с Google
                     </button>
                     <button class="btn social-btn facebook">
-                        <img src="facebook-icon.png" alt="Facebook" width="20" height="20"> Войти с Facebook
+                        <img src="{{ url_for('static', path='/images/facebook-icon.png') }}" alt="Facebook" width="20" height="20"> Войти с Facebook
                     </button>
                 </div>
             </div>
@@ -60,7 +60,7 @@
             <!-- Registration Form -->
             <div id="register" class="tab-content hidden">
                 <h2>Присоединяйтесь к WorkFlow</h2>
-                <form action="/api/auth/login" method="POST" class="auth-form">
+                <form id="register-form" class="auth-form">
                     <div class="form-group">
                         <label for="register-name">Имя</label>
                         <input type="text" id="register-name" name="name" placeholder="Ваше полное имя" required>
@@ -87,10 +87,10 @@
 
                 <div class="social-login">
                     <button class="btn social-btn google">
-                        <img src="google-icon.png" alt="Google" width="20" height="20"> Регистрация через Google
+                        <img src="{{ url_for('static', path='/images/google-icon.png') }}" alt="Google" width="20" height="20"> Регистрация через Google
                     </button>
                     <button class="btn social-btn facebook">
-                        <img src="facebook-icon.png" alt="Facebook" width="20" height="20"> Регистрация через Facebook
+                        <img src="{{ url_for('static', path='/images/facebook-icon.png') }}" alt="Facebook" width="20" height="20"> Регистрация через Facebook
                     </button>
                 </div>
             </div>

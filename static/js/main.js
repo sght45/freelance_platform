@@ -197,4 +197,82 @@ if (skillsInput && skillsContainer) {
     ['React', 'UI/UX', 'Node.js'].forEach(addSkill);
 }
 
+// --- Auth Form Handling (for login.html) ---
+const loginForm = document.getElementById('login-form');
+const registerForm = document.getElementById('register-form');
+
+if (loginForm) {
+    loginForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const formData = new FormData(loginForm);
+        const data = {
+            email: formData.get('email'),
+            password: formData.get('password')
+        };
+
+        try {
+            const response = await fetch('/api/auth/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+
+            if (response.ok) {
+                const result = await response.json();
+                // Redirect to dashboard or home
+                window.location.href = '/dashboard';
+            } else {
+                const error = await response.json();
+                alert('Ошибка входа: ' + (error.detail || 'Неизвестная ошибка'));
+            }
+        } catch (error) {
+            alert('Ошибка сети: ' + error.message);
+        }
+    });
+}
+
+if (registerForm) {
+    registerForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const formData = new FormData(registerForm);
+        const data = {
+            name: formData.get('name'),
+            email: formData.get('email'),
+            password: formData.get('password'),
+            role_id: parseInt(formData.get('role_id'))
+        };
+
+        // Check if passwords match
+        const password = formData.get('password');
+        const confirmPassword = formData.get('confirm-password');
+        if (password !== confirmPassword) {
+            alert('Пароли не совпадают');
+            return;
+        }
+
+        try {
+            const response = await fetch('/api/auth/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+
+            if (response.ok) {
+                alert('Регистрация успешна! Теперь войдите в систему.');
+                // Switch to login tab
+                switchTab('login');
+            } else {
+                const error = await response.json();
+                alert('Ошибка регистрации: ' + (error.detail || 'Неизвестная ошибка'));
+            }
+        } catch (error) {
+            alert('Ошибка сети: ' + error.message);
+        }
+    });
+}
+
 });

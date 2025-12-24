@@ -49,16 +49,16 @@ async def lifespan(app: FastAPI):
     Контекстный менеджер для управления жизненным циклом приложения
     """
     print("=" * 50)
-    print("🚀 ЗАПУСК ФРИЛАНС-ПЛАТФОРМЫ")
+    print("ЗАПУСК ФРИЛАНС-ПЛАТФОРМЫ")
     print("=" * 50)
     
     # Создаем таблицы в базе данных
     try:
         async with engine.begin() as conn:
             await conn.run_sync(Base.metadata.create_all)
-        print("✅ Таблицы базы данных созданы")
+        print("Таблицы базы данных созданы")
     except Exception as e:
-        print(f"❌ Ошибка при создании таблиц: {e}")
+        print(f"Ошибка при создании таблиц: {e}")
         raise
     
     # Создаем начальные данные
@@ -202,7 +202,15 @@ async def post_project_page(request: Request):
 async def login_page(request: Request):
     """Страница входа в систему"""
     return templates.TemplateResponse(
-        "login.html", 
+        "login.html",
+        {"request": request, "title": "Вход в систему"}
+    )
+
+@app.get("/login.html", response_class=HTMLResponse)
+async def login_html_page(request: Request):
+    """Страница входа в систему (альтернативный маршрут)"""
+    return templates.TemplateResponse(
+        "login.html",
         {"request": request, "title": "Вход в систему"}
     )
 
